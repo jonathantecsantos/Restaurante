@@ -14,7 +14,7 @@ import Excecoes.PratoNaoEncontradoException;
 /**
  * 
  * @author Abimael e Jonathan 
- * Classe resonsável pelo gerenciamento do restaurante
+ * Classe resonsavel pelo gerenciamento do restaurante
  */
 public class Gerenciador {
 	private List<Garcom> garcons = new ArrayList<Garcom>();
@@ -23,19 +23,19 @@ public class Gerenciador {
 	private List<Mesa> mesas = new ArrayList<Mesa>();
 
 	/**
-	 * Método responsável pelo cadastro do Garçon
+	 * Metodo responsavel pelo cadastro do Garï¿½on
 	 */
 	public void cadastrarGarcom() {
 		Scanner leitor = new Scanner(System.in);
-		System.out.println("Digite o nome do novo garçom:\n");
+		System.out.println("Digite o nome do novo garï¿½om:\n");
 		String nome = leitor.nextLine();
 		Garcom garcomNovo = new Garcom(nome);
 		this.garcons.add(garcomNovo);
-		System.out.println("Garçom cadastrado com sucesso!");
+		System.out.println("Garï¿½om cadastrado com sucesso!");
 	}
 
 	/**
-	 * Método responsável pela criação de Mesas Recebe a quantidade de mesas
+	 * Metodo responsavel pela criacao de Mesas Recebe a quantidade de mesas
 	 * desejada por parametro
 	 * 
 	 * @param quantidadeDeMesas
@@ -48,7 +48,7 @@ public class Gerenciador {
 	}
 
 	/**
-	 * Método responsável por adiconar pratos ao cardápio Lanca execessão caso o
+	 * Metodo responsavel por adiconar pratos ao cardapio Lanca execessao caso o
 	 * preco do prato seja menor que zero
 	 * 
 	 * @throws PrecoMenorQueZeroException
@@ -63,7 +63,7 @@ public class Gerenciador {
 		String descricao = leitor.nextLine();
 		// Autentica se a descricao do prato nao esta vazia
 		String descricaoPrato = validaEntradaDeTexto(descricao);
-		System.out.println("Digite o preço do novo prato:\n");
+		System.out.println("Digite o preï¿½o do novo prato:\n");
 		Double preco = Double.parseDouble(leitor.nextLine());
 		if (preco < 0) {
 			throw new PrecoMenorQueZeroException();
@@ -233,7 +233,7 @@ public class Gerenciador {
 		Scanner leitor = new Scanner(System.in);
 		String entrada = ent;
 		while (entrada.isEmpty()) {
-			System.out.println("Entrada inválida. Digite novamente: \n");
+			System.out.println("Entrada invï¿½lida. Digite novamente: \n");
 			entrada = leitor.nextLine();
 		}
 		return entrada;

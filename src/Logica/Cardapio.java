@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * 
  * @author Abimael e Jonathan 
- * Classe responsável pelo cardapio do restaurante
+ * Classe responsavel pelo cardapio do restaurante
  * Nesta classe he agrupado uma lista de pratos
  */
 public class Cardapio {
@@ -31,7 +31,7 @@ public class Cardapio {
 		String resultado = "";
 		int contador = 1;
 		for (Prato prato : cardapio) {
-			resultado = resultado + contador + " Prato: " + prato.getNome() + "  Preço: " + prato.getPreco()
+			resultado = resultado + contador + " Prato: " + prato.getNome() + "  Preï¿½o: " + prato.getPreco()
 					+ " ID DO PRATO: " + prato.getId() + "\n";
 			contador++;
 		}

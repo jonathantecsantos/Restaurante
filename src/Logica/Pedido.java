@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * 
  * @author Jonathan e Abimael
- * Classe responsável pelos pedidos do restaurante
+ * Classe responsavel pelos pedidos do restaurante
  */
 public class Pedido {
 	private static int geradorId=0;
@@ -75,7 +75,7 @@ public class Pedido {
 	public String toString() {
 		String resultado = "";
 		for (Prato prato : pratos) {
-			resultado = resultado +"Prato consumido: "+ prato.getNome()+" Preço do prato: "+prato.getPreco()+ "\n"; 
+			resultado = resultado +"Prato consumido: "+ prato.getNome()+" Preï¿½o do prato: "+prato.getPreco()+ "\n"; 
 		}
 		resultado = resultado + "NOME DO PEDIDO: "+ this.nome+ "\n"+ "TOTAL CONSUMIDO ATE O MOMENTO: "+ fecharPedido()+"\n";
 		
