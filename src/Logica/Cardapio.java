@@ -9,6 +9,7 @@ import java.util.List;
  * Classe responsavel pelo cardapio do restaurante
  * Nesta classe he agrupado uma lista de pratos
  */
+// Macedo
 public class Cardapio {
 
 	private List<Prato> cardapio = new ArrayList<Prato>();
