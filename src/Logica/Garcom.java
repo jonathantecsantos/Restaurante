@@ -2,7 +2,7 @@ package Logica;
 
 /**
  * 
- * @author Abimael e Jonathan e Alysson
+ * @author Abimael e Jonathan @
  * Classe responsavel pelo cadastro do Garcom
  */
 public class Garcom {
