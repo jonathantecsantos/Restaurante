@@ -28,7 +28,7 @@
     </Component>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="defaultCloseOperation" type="int" value="0"/>
     <Property name="title" type="java.lang.String" value="Cadastro de Gar&#xe7;om"/>
   </Properties>
   <SyntheticProperties>
@@ -73,21 +73,33 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Primeiro"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btPrimeiroActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btAnterior">
           <Properties>
             <Property name="text" type="java.lang.String" value="Anterior"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAnteriorActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btProximo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Prox&#xed;mo"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btProximoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btUltimo">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xda;ltimo"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btUltimoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btFechar">
           <Properties>
@@ -223,11 +235,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Editar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnCancelar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cancelar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnSalvar">
                   <Properties>
@@ -241,6 +259,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Excluir"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

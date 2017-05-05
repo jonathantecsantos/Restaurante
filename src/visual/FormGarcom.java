@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package visual;
 
 import Logica.DAOGarcom;
 import Logica.Garcom;
 import Logica.Gerenciador;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,19 +18,44 @@ import java.util.ArrayList;
 public class FormGarcom extends javax.swing.JDialog {
 
     DAOGarcom dao = new DAOGarcom();
-    
-    public void atualizaTabela(){
+
+    public void atualizaTabela() {
         listGarcons.clear();
-        listGarcons.addAll(dao.getLista()); 
-        int linha = listGarcons.size() -1;
-        if (linha >= 0){
+        listGarcons.addAll(dao.getLista());
+        int linha = listGarcons.size() - 1;
+        if (linha >= 0) {
             tblObjetosGarcom.setRowSelectionInterval(linha, linha);
             tblObjetosGarcom.scrollRectToVisible(tblObjetosGarcom.getCellRect(linha, linha, true));
         }
     }
-    
-    
-    
+
+    private void trataEdicao(boolean editando) {
+
+        btnCancelar.setEnabled(editando);
+        btnSalvar.setEnabled(editando);
+        btnEditar.setEnabled(!editando);
+        btnExcluir.setEnabled(!editando);
+        btnNovo.setEnabled(!editando);
+        btFechar.setEnabled(!editando);
+        btPrimeiro.setEnabled(!editando);
+        btProximo.setEnabled(!editando);
+        btPrimeiro.setEnabled(!editando);
+        btAnterior.setEnabled(!editando);
+        btUltimo.setEnabled(!editando);
+        txtNomeGarcom.setEditable(editando);
+        tblObjetosGarcom.setEnabled(!editando);
+    }
+
+    public boolean validaCampos() {
+        if (!(txtNomeGarcom.getText().length() > 0)) {
+            JOptionPane.showMessageDialog(null, "Informe o nome do garcom");
+            txtNomeGarcom.requestFocus();
+            return false;
+        }
+        
+        return true;
+    }
+
     /**
      * Creates new form FormGarcom
      */
@@ -38,6 +63,7 @@ public class FormGarcom extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         atualizaTabela();
+        trataEdicao(false);
     }
 
     /**
@@ -86,22 +112,42 @@ public class FormGarcom extends javax.swing.JDialog {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Cadastro de Garçom");
 
         painelNavegacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Navegação"));
         painelNavegacao.setLayout(new java.awt.GridLayout(1, 0));
 
         btPrimeiro.setText("Primeiro");
+        btPrimeiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPrimeiroActionPerformed(evt);
+            }
+        });
         painelNavegacao.add(btPrimeiro);
 
         btAnterior.setText("Anterior");
+        btAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAnteriorActionPerformed(evt);
+            }
+        });
         painelNavegacao.add(btAnterior);
 
         btProximo.setText("Proxímo");
+        btProximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btProximoActionPerformed(evt);
+            }
+        });
         painelNavegacao.add(btProximo);
 
         btUltimo.setText("Último");
+        btUltimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUltimoActionPerformed(evt);
+            }
+        });
         painelNavegacao.add(btUltimo);
 
         btFechar.setText("Fechar");
@@ -141,9 +187,19 @@ public class FormGarcom extends javax.swing.JDialog {
         painelAcoes.add(btnNovo);
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
         painelAcoes.add(btnEditar);
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
         painelAcoes.add(btnCancelar);
 
         btnSalvar.setText("Salvar");
@@ -155,6 +211,11 @@ public class FormGarcom extends javax.swing.JDialog {
         painelAcoes.add(btnSalvar);
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
         painelAcoes.add(btnExcluir);
 
         lbNomeGarcom.setText("Nome");
@@ -200,17 +261,68 @@ public class FormGarcom extends javax.swing.JDialog {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         listGarcons.add((Garcom) new Garcom());
-        int linha = listGarcons.size() -1;
+        int linha = listGarcons.size() - 1;
         tblObjetosGarcom.setRowSelectionInterval(linha, linha);
+        trataEdicao(true);
         txtNomeGarcom.requestFocus();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        int linhaSelecionada = tblObjetosGarcom.getSelectedRow();
-        Garcom obj = listGarcons.get(linhaSelecionada);
-        dao.salvar(obj);
-        atualizaTabela();
+        if (validaCampos()) {
+            int linhaSelecionada = tblObjetosGarcom.getSelectedRow();
+            Garcom obj = listGarcons.get(linhaSelecionada);
+            dao.salvar(obj);
+            trataEdicao(false);
+            atualizaTabela();
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        trataEdicao(true);
+        txtNomeGarcom.requestFocus();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        trataEdicao(false);
+        atualizaTabela();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+       int linhaSelecionada = tblObjetosGarcom.getSelectedRow();
+       Garcom obj = listGarcons.get(linhaSelecionada);
+       dao.remover(obj);
+       atualizaTabela();
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrimeiroActionPerformed
+        tblObjetosGarcom.setRowSelectionInterval(0, 0);
+        tblObjetosGarcom.scrollRectToVisible(tblObjetosGarcom.getCellRect(0, 0, true));
+        
+    }//GEN-LAST:event_btPrimeiroActionPerformed
+
+    private void btAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAnteriorActionPerformed
+        int linha = tblObjetosGarcom.getSelectedRow();
+        if((linha -1) >= 0){
+            linha --;
+        }
+        tblObjetosGarcom.setRowSelectionInterval(linha,linha);
+        tblObjetosGarcom.scrollRectToVisible(tblObjetosGarcom.getCellRect(linha, 0, true));
+    }//GEN-LAST:event_btAnteriorActionPerformed
+
+    private void btProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProximoActionPerformed
+        int linha = tblObjetosGarcom.getSelectedRow();
+        if((linha +1) <= (tblObjetosGarcom.getRowCount() -1)){
+            linha ++;
+        }
+        tblObjetosGarcom.setRowSelectionInterval(linha,linha);
+        tblObjetosGarcom.scrollRectToVisible(tblObjetosGarcom.getCellRect(linha, 0, true));
+    }//GEN-LAST:event_btProximoActionPerformed
+
+    private void btUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUltimoActionPerformed
+        int linha = tblObjetosGarcom.getRowCount() -1;
+        tblObjetosGarcom.setRowSelectionInterval(linha,linha);
+        tblObjetosGarcom.scrollRectToVisible(tblObjetosGarcom.getCellRect(linha, 0, true));
+    }//GEN-LAST:event_btUltimoActionPerformed
 
     /**
      * @param args the command line arguments
