@@ -288,10 +288,14 @@ public class FormGarcom extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+       int option = JOptionPane.showOptionDialog(null, "Confirma a exclusão?", "Pergunta", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, new String[]{"Sim","Não"},"Sim");
+       if (option == 0){
        int linhaSelecionada = tblObjetosGarcom.getSelectedRow();
        Garcom obj = listGarcons.get(linhaSelecionada);
        dao.remover(obj);
        atualizaTabela();
+       
+       }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrimeiroActionPerformed

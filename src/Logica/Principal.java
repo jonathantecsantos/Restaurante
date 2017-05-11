@@ -1,6 +1,7 @@
 package Logica;
 
 import java.util.Scanner;
+import javax.swing.JFrame;
 import visual.MenuPrincipal;
 
 public class Principal {
@@ -10,8 +11,12 @@ public class Principal {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-             //   MenuPrincipal menu = new MenuPrincipal();
-         
+             
+            //Inicia o FORM Menu Principal    
+            MenuPrincipal menu = new MenuPrincipal();
+            menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            menu.setSize(400,500);
+            menu.setVisible(true);
                 
 		Scanner sc = new Scanner(System.in);
 		Gerenciador gerenciador = new Gerenciador();
