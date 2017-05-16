@@ -26,15 +26,13 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroGarcomActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="cadastroPrato">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Prato"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="cadastroCardapio">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cardapio"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroCardapioActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

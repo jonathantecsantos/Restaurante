@@ -13,6 +13,9 @@ import java.util.List;
 public class Cardapio {
 
 	private List<Prato> cardapio = new ArrayList<Prato>();
+        private Integer codigo;
+
+    
 
 	/**
 	 * Metodo para adicionar prato ao cardapio
@@ -55,5 +58,12 @@ public class Cardapio {
 	public void setCardapio(List<Prato> cardapio) {
 		this.cardapio = cardapio;
 	}
+        public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
 
 }

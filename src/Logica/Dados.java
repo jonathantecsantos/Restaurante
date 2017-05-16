@@ -15,4 +15,5 @@ import java.util.List;
  */
 public class Dados {
     public static List<Garcom> listaGarcons = new ArrayList<>();
+    public static List<Cardapio> listaCardapio = new ArrayList<>();
 }
