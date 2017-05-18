@@ -26,12 +26,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroGarcomActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="cadastroCardapio">
+            <MenuItem class="javax.swing.JMenuItem" name="cadastroPrato">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cardapio"/>
+                <Property name="text" type="java.lang.String" value="Prato"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroCardapioActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroPratoActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

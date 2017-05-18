@@ -35,7 +35,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         barraMenuPrincipal = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         cadastroGarcom = new javax.swing.JMenuItem();
-        cadastroCardapio = new javax.swing.JMenuItem();
+        cadastroPrato = new javax.swing.JMenuItem();
         menuPedidos = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
@@ -53,13 +53,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         menuCadastro.add(cadastroGarcom);
 
-        cadastroCardapio.setText("Cardapio");
-        cadastroCardapio.addActionListener(new java.awt.event.ActionListener() {
+        cadastroPrato.setText("Prato");
+        cadastroPrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastroCardapioActionPerformed(evt);
+                cadastroPratoActionPerformed(evt);
             }
         });
-        menuCadastro.add(cadastroCardapio);
+        menuCadastro.add(cadastroPrato);
 
         barraMenuPrincipal.add(menuCadastro);
 
@@ -91,13 +91,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cadastroGarcomActionPerformed
 
-    private void cadastroCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroCardapioActionPerformed
+    private void cadastroPratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroPratoActionPerformed
         FormCardapio form = new FormCardapio(this,true);
         form.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         form.setLocationRelativeTo(null);
         form.setResizable(false);
         form.setVisible(true);
-    }//GEN-LAST:event_cadastroCardapioActionPerformed
+    }//GEN-LAST:event_cadastroPratoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,8 +140,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenuPrincipal;
-    private javax.swing.JMenuItem cadastroCardapio;
     private javax.swing.JMenuItem cadastroGarcom;
+    private javax.swing.JMenuItem cadastroPrato;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenu menuPedidos;

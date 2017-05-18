@@ -36,7 +36,7 @@ public class Cardapio {
 		int contador = 1;
 		for (Prato prato : cardapio) {
 			resultado = resultado + contador + " Prato: " + prato.getNome() + "  Pre�o: " + prato.getPreco()
-					+ " ID DO PRATO: " + prato.getId() + "\n";
+					+ " ID DO PRATO: " + prato.getCodigo() + "\n";
 			contador++;
 		}
 

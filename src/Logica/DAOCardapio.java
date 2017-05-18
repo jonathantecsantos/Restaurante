@@ -14,21 +14,21 @@ import java.util.List;
  */
 public class DAOCardapio {
     
-    public List<Cardapio> getLista(){
-        return Dados.listaCardapio;
+    public List<Prato> getLista(){
+        return Dados.listaPratos;
     }
     
     
-    public boolean salvar (Cardapio obj){
-        if (obj.getCodigo() == null){
-            Integer codigo = Dados.listaCardapio.size() + 1;
+    public boolean salvar (Prato obj){
+       // if (obj.getCodigo()== null){
+            Integer codigo = Dados.listaPratos.size() + 1;
             obj.setCodigo(codigo);
-            Dados.listaCardapio.add(obj);
-        }
+            Dados.listaPratos.add(obj);
+        //}
         return true;
     }
-    public boolean remover (Cardapio obj){
-        Dados.listaCardapio.remove(obj);
+    public boolean remover (Prato obj){
+        Dados.listaPratos.remove(obj);
         return true;
     }
 }

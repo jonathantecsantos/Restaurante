@@ -7,7 +7,6 @@ package visual;
 
 import Logica.DAOGarcom;
 import Logica.Garcom;
-import Logica.Gerenciador;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 

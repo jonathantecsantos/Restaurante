@@ -170,7 +170,7 @@ public class Gerenciador {
 	 */
 	public Prato buscarPrato(int id) throws PratoNaoEncontradoException {
 		for (Prato prato : cardapio.getCardapio()) {
-			if (prato.getId() == id) {
+			if (prato.getCodigo() == id) {
 				return prato;
 			}
 		}

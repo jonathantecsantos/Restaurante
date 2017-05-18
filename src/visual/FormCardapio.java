@@ -10,6 +10,7 @@ import Logica.DAOCardapio;
 import Logica.DAOGarcom;
 import Logica.Garcom;
 import Logica.Gerenciador;
+import Logica.Prato;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -22,9 +23,9 @@ public class FormCardapio extends javax.swing.JDialog {
     DAOCardapio dao = new DAOCardapio();
 
     public void atualizaTabela() {
-        listCardapio.clear();
-        listCardapio.addAll(dao.getLista());
-        int linha = listCardapio.size() - 1;
+        listPratos.clear();
+        listPratos.addAll(dao.getLista());
+        int linha = listPratos.size() - 1;
         if (linha >= 0) {
             tblObjetosCardapio.setRowSelectionInterval(linha, linha);
             tblObjetosCardapio.scrollRectToVisible(tblObjetosCardapio.getCellRect(linha, linha, true));
@@ -90,7 +91,7 @@ public class FormCardapio extends javax.swing.JDialog {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        listCardapio = org.jdesktop.observablecollections.ObservableCollections.observableList(new ArrayList<Cardapio>())
+        listPratos = org.jdesktop.observablecollections.ObservableCollections.observableList(new ArrayList<Prato>())
         ;
         painelNavegacao = new javax.swing.JPanel();
         btPrimeiro = new javax.swing.JButton();
@@ -179,10 +180,19 @@ public class FormCardapio extends javax.swing.JDialog {
 
         abaListagemCardapio.setLayout(new java.awt.BorderLayout());
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, listCardapio, tblObjetosCardapio);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${cardapio}"));
-        columnBinding.setColumnName("Cardapio");
-        columnBinding.setColumnClass(java.util.List.class);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, listPratos, tblObjetosCardapio);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${codigo}"));
+        columnBinding.setColumnName("Codigo");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nome}"));
+        columnBinding.setColumnName("Nome");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${descricao}"));
+        columnBinding.setColumnName("Descricao");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${preco}"));
+        columnBinding.setColumnName("Preco");
+        columnBinding.setColumnClass(Double.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
         jScrollPane1.setViewportView(tblObjetosCardapio);
@@ -241,6 +251,9 @@ public class FormCardapio extends javax.swing.JDialog {
 
         lbDescricaoPratoCardapio.setText("Descricao");
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tblObjetosCardapio, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.descricao}"), txtDescricaoPratoCardapio, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         lbPrecoCardapio.setText("Preço");
 
         javax.swing.GroupLayout abaDadosCardapioLayout = new javax.swing.GroupLayout(abaDadosCardapio);
@@ -294,8 +307,8 @@ public class FormCardapio extends javax.swing.JDialog {
     }//GEN-LAST:event_btFecharActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        listCardapio.add((Cardapio) new Cardapio());
-        int linha = listCardapio.size() - 1;
+        listPratos.add((Prato) new Prato());
+        int linha = listPratos.size() - 1;
         tblObjetosCardapio.setRowSelectionInterval(linha, linha);
         trataEdicao(true);
         txtNomePratoCardapio.requestFocus();
@@ -304,7 +317,7 @@ public class FormCardapio extends javax.swing.JDialog {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         if (validaCampos()) {
             int linhaSelecionada = tblObjetosCardapio.getSelectedRow();
-            Cardapio obj = listCardapio.get(linhaSelecionada);
+            Prato obj = listPratos.get(linhaSelecionada);
             dao.salvar(obj);
             trataEdicao(false);
             atualizaTabela();
@@ -325,7 +338,7 @@ public class FormCardapio extends javax.swing.JDialog {
        int option = JOptionPane.showOptionDialog(null, "Confirma a exclusão?", "Pergunta", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, new String[]{"Sim","Não"},"Sim");
        if (option == 0){
        int linhaSelecionada = tblObjetosCardapio.getSelectedRow();
-       Cardapio obj = listCardapio.get(linhaSelecionada);
+       Prato obj = listPratos.get(linhaSelecionada);
        dao.remover(obj);
        atualizaTabela();
        
@@ -423,7 +436,7 @@ public class FormCardapio extends javax.swing.JDialog {
     private javax.swing.JLabel lbDescricaoPratoCardapio;
     private javax.swing.JLabel lbNomeCardapio;
     private javax.swing.JLabel lbPrecoCardapio;
-    private java.util.List<Cardapio> listCardapio;
+    private java.util.List<Prato> listPratos;
     private javax.swing.JPanel painelAcoes;
     private javax.swing.JPanel painelNavegacao;
     private javax.swing.JTable tblObjetosCardapio;
